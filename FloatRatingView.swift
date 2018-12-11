@@ -19,7 +19,7 @@ import UIKit
 /// A simple rating view that can set whole, half or floating point ratings.
 @IBDesignable
 @objcMembers
-open class FloatRatingView: UIView {
+open class FloatRatingView: UIControl {
     
     // MARK: Properties
     
@@ -259,28 +259,24 @@ open class FloatRatingView: UIView {
 
 
     // MARK: Touch events
+	
+	open override func beginTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
+		updateLocation(touch)
+		return true
+	}
 
-    override open func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let touch = touches.first else {
-            return
-        }
-        updateLocation(touch)
-    }
+	open override func continueTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
+		updateLocation(touch)
+		return true
+	}
 
-    override open func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let touch = touches.first else {
-            return
-        }
-        updateLocation(touch)
-    }
-    
-    override open func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        // Update delegate
-        delegate?.floatRatingView?(self, didUpdate: rating)
-    }
-    
-    override open func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        // Update delegate
-        delegate?.floatRatingView?(self, didUpdate: rating)
-    }
+	open override func endTracking(_ touch: UITouch?, with event: UIEvent?) {
+		super.endTracking(touch, with: event)
+		delegate?.floatRatingView?(self, didUpdate: rating)
+	}
+
+	open override func cancelTracking(with event: UIEvent?) {
+		super.cancelTracking(with: event)
+		delegate?.floatRatingView?(self, didUpdate: rating)
+	}
 }
