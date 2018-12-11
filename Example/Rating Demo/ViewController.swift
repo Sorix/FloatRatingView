@@ -9,12 +9,6 @@ class ViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		// Reset float rating view's background color
-		floatRatingView.backgroundColor = UIColor.clear
-		
-		/** Note: With the exception of contentMode, type and delegate,
-		all properties can be set directly in Interface Builder **/
-		floatRatingView.contentMode = UIView.ContentMode.scaleAspectFit
 		floatRatingView.type = .halfRatings
 		
 		// Labels init
@@ -23,14 +17,10 @@ class ViewController: UIViewController {
 	
 	@IBAction func ratingTypeChanged(_ sender: UISegmentedControl) {
 		switch sender.selectedSegmentIndex {
-		case 0:
-			floatRatingView.type = .wholeRatings
-		case 1:
-			floatRatingView.type = .halfRatings
-		case 2:
-			floatRatingView.type = .floatRatings
-		default:
-			floatRatingView.type = .wholeRatings
+		case 0: floatRatingView.type = .wholeRatings
+		case 1: floatRatingView.type = .halfRatings
+		case 2: floatRatingView.type = .floatRatings
+		default: return
 		}
 	}
 	
