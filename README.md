@@ -8,7 +8,7 @@ A simple `@IBDesignable` rating control for iOS written in Swift. Supports whole
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod 'RatingControl', '~> 3.5'
+pod 'RatingControl', '~> 4.0'
 ```
 
 ## Usage
@@ -33,13 +33,13 @@ To respond on events you may use storyboard's value changed connection to `@IBAc
 
 ```swift
 override func viewDidLoad() {
-  super.viewDidLoad()
+	super.viewDidLoad()
 
-  floatRatingView.addTarget(self, action: #selector(ratingChanged(_:)), for: .valueChanged)
+	floatRatingView.addTarget(self, action: #selector(ratingChanged(_:)), for: .valueChanged)
 }
 
 func ratingChanged(_ sender: RatingControl) {
-  print("New rating: \(sender.rating)")
+	print("New rating: \(sender.rating)")
 }
 ```
 
