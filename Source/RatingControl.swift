@@ -14,7 +14,7 @@ import UIKit
 			for imageView in emptyImageViews {
 				imageView.image = emptyImage
 			}
-			refreshMaskLayer()
+			refreshMaskLayer(rating: rating)
 		}
 	}
 	
@@ -26,7 +26,7 @@ import UIKit
 			for imageView in fullImageViews {
 				imageView.image = fullImage
 			}
-			refreshMaskLayer()
+			refreshMaskLayer(rating: rating)
 		}
 	}
 	
@@ -43,7 +43,7 @@ import UIKit
 			// Update current rating if needed
 			if rating < Double(minRating) {
 				rating = Double(minRating)
-				refreshMaskLayer()
+				refreshMaskLayer(rating: rating)
 			}
 		}
 	}
@@ -57,7 +57,7 @@ import UIKit
 				
 				// Relayout and refresh
 				setNeedsLayout()
-				refreshMaskLayer()
+				refreshMaskLayer(rating: rating)
 			}
 		}
 	}
@@ -66,7 +66,7 @@ import UIKit
 	@IBInspectable open var rating: Double = 0 {
 		didSet {
 			if rating != oldValue {
-				refreshMaskLayer()
+				refreshMaskLayer(rating: rating)
 			}
 		}
 	}
@@ -97,6 +97,10 @@ import UIKit
 	
 	/// Array of full image views
 	internal var fullImageViews: [UIImageView] = []
+
+	// Used to avoid excessive haptic feedbacks
+	internal var lastTouchedRating: Double?
+	internal var haptic: UISelectionFeedbackGenerator?
 	
 	// MARK: - Initializations
 	
@@ -158,35 +162,35 @@ import UIKit
 			imageView.frame = imageFrame
 		}
 		
-		refreshMaskLayer()
+		refreshMaskLayer(rating: rating)
 	}
 	
 	// MARK: Tracking
 	
 	open override func beginTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
-		rating = rating(for: touch)
+		haptic = UISelectionFeedbackGenerator()
+		handle(touch: touch, type: .continue)
 		return true
 	}
 	
 	open override func continueTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
-		let newRating = rating(for: touch)
-		if newRating != rating {
-			rating = newRating
-			
-			if isContinuous { sendActions(for: [.valueChanged]) }
-		}
+		handle(touch: touch, type: .continue)
 		return true
 	}
 	
 	open override func endTracking(_ touch: UITouch?, with event: UIEvent?) {
+		if let finalTouch = touch {
+			handle(touch: finalTouch, type: .final)
+		}
+		
+		haptic = nil
+		lastTouchedRating = nil
 		super.endTracking(touch, with: event)
-		sendActions(for: [.valueChanged])
-		delegate?.floatRatingView?(self, didUpdate: rating)
 	}
 	
 	open override func cancelTracking(with event: UIEvent?) {
+		haptic = nil
+		lastTouchedRating = nil
 		super.cancelTracking(with: event)
-		sendActions(for: [.valueChanged])
-		delegate?.floatRatingView?(self, didUpdate: rating)
 	}
 }

@@ -35,7 +35,7 @@ internal extension RatingControl {
 	}
 	
 	// Refresh hides or shows full images
-	func refreshMaskLayer() {
+	func refreshMaskLayer(rating: Double) {
 		for i in 0..<fullImageViews.count {
 			let imageView = fullImageViews[i]
 			
@@ -88,5 +88,47 @@ internal extension RatingControl {
 		} else {
 			return newRating
 		}
+	}
+	
+	func handle(touch: UITouch, type: TouchType) {
+		let newRating = rating(for: touch)
+
+		// Haptic
+		if let lastTouchedRating = self.lastTouchedRating {
+			// touched previously
+			if lastTouchedRating != newRating {
+				// rating has changed
+				haptic?.selectionChanged()
+			}
+		} else {
+			// never touched previously
+			if newRating != rating {
+				// new touch is on another rating
+				haptic?.selectionChanged()
+			}
+		}
+		lastTouchedRating = newRating
+		
+		// Update
+		switch type {
+		case .continue:
+			if isContinuous && newRating != rating {
+				rating = newRating
+				sendActions(for: [.valueChanged])
+				delegate?.floatRatingView?(self, isUpdating: newRating)
+			} else {
+				refreshMaskLayer(rating: newRating)
+			}
+		case .final:
+			if newRating == rating { return }
+			
+			rating = newRating
+			sendActions(for: [.valueChanged])
+			delegate?.floatRatingView?(self, didUpdate: newRating)
+		}
+	}
+	
+	enum TouchType {
+		case final, `continue`
 	}
 }
