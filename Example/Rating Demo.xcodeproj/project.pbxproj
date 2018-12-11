@@ -7,21 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6DD6B5B4E5794BA6A0ED5885 /* Pods_Rating_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5625428A1AC65691C73B2EE1 /* Pods_Rating_Demo.framework */; };
 		B275F40719BA5E3600E6F169 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B275F40619BA5E3600E6F169 /* AppDelegate.swift */; };
 		B275F40919BA5E3600E6F169 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B275F40819BA5E3600E6F169 /* ViewController.swift */; };
 		B275F40C19BA5E3600E6F169 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B275F40A19BA5E3600E6F169 /* Main.storyboard */; };
 		B275F40E19BA5E3600E6F169 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B275F40D19BA5E3600E6F169 /* Images.xcassets */; };
-		B275F42519BA5E5100E6F169 /* FloatRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B275F42419BA5E5100E6F169 /* FloatRatingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1853387BB51713B32DE0EECF /* Pods-Rating Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rating Demo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Rating Demo/Pods-Rating Demo.release.xcconfig"; sourceTree = "<group>"; };
+		5625428A1AC65691C73B2EE1 /* Pods_Rating_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Rating_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B275F40119BA5E3600E6F169 /* Rating Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Rating Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B275F40519BA5E3600E6F169 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B275F40619BA5E3600E6F169 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B275F40819BA5E3600E6F169 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B275F40B19BA5E3600E6F169 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B275F40D19BA5E3600E6F169 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		B275F42419BA5E5100E6F169 /* FloatRatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FloatRatingView.swift; path = ../../FloatRatingView.swift; sourceTree = "<group>"; };
+		FE23233A73816F00758DA681 /* Pods-Rating Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rating Demo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Rating Demo/Pods-Rating Demo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +31,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6DD6B5B4E5794BA6A0ED5885 /* Pods_Rating_Demo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		67B17854EEA797DB73A89D8F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5625428A1AC65691C73B2EE1 /* Pods_Rating_Demo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8129E282F6AAC072C96CBD92 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FE23233A73816F00758DA681 /* Pods-Rating Demo.debug.xcconfig */,
+				1853387BB51713B32DE0EECF /* Pods-Rating Demo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		B275F3F819BA5E3600E6F169 = {
 			isa = PBXGroup;
 			children = (
 				B275F40319BA5E3600E6F169 /* Rating Demo */,
 				B275F40219BA5E3600E6F169 /* Products */,
+				8129E282F6AAC072C96CBD92 /* Pods */,
+				67B17854EEA797DB73A89D8F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,7 +76,6 @@
 		B275F40319BA5E3600E6F169 /* Rating Demo */ = {
 			isa = PBXGroup;
 			children = (
-				B275F42319BA5E3E00E6F169 /* FloatRatingView */,
 				B275F40619BA5E3600E6F169 /* AppDelegate.swift */,
 				B275F40819BA5E3600E6F169 /* ViewController.swift */,
 				B275F40A19BA5E3600E6F169 /* Main.storyboard */,
@@ -72,14 +93,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		B275F42319BA5E3E00E6F169 /* FloatRatingView */ = {
-			isa = PBXGroup;
-			children = (
-				B275F42419BA5E5100E6F169 /* FloatRatingView.swift */,
-			);
-			name = FloatRatingView;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -87,9 +100,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B275F41D19BA5E3600E6F169 /* Build configuration list for PBXNativeTarget "Rating Demo" */;
 			buildPhases = (
+				F9D6E4848B7FDFC3123C773C /* [CP] Check Pods Manifest.lock */,
 				B275F3FD19BA5E3600E6F169 /* Sources */,
 				B275F3FE19BA5E3600E6F169 /* Frameworks */,
 				B275F3FF19BA5E3600E6F169 /* Resources */,
+				524A47BB79670B9A59A5DB05 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -108,12 +123,13 @@
 			attributes = {
 				LastSwiftMigration = 0700;
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "On The Pursuit";
 				TargetAttributes = {
 					B275F40019BA5E3600E6F169 = {
 						CreatedOnToolsVersion = 6.0;
-						LastSwiftMigration = 0900;
+						DevelopmentTeam = 7X2PJ6H6YM;
+						LastSwiftMigration = 1010;
 					};
 				};
 			};
@@ -147,12 +163,58 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		524A47BB79670B9A59A5DB05 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Rating Demo/Pods-Rating Demo-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/RatingControl/RatingControl.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RatingControl.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Rating Demo/Pods-Rating Demo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F9D6E4848B7FDFC3123C773C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Rating Demo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		B275F3FD19BA5E3600E6F169 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B275F42519BA5E5100E6F169 /* FloatRatingView.swift in Sources */,
 				B275F40919BA5E3600E6F169 /* ViewController.swift in Sources */,
 				B275F40719BA5E3600E6F169 /* AppDelegate.swift in Sources */,
 			);
@@ -184,12 +246,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -216,7 +280,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -236,12 +300,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -261,7 +327,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -271,31 +337,33 @@
 		};
 		B275F41E19BA5E3600E6F169 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FE23233A73816F00758DA681 /* Pods-Rating Demo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = 7X2PJ6H6YM;
 				INFOPLIST_FILE = "Rating Demo/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.onthepursuit.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Rating-Demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
 		B275F41F19BA5E3600E6F169 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1853387BB51713B32DE0EECF /* Pods-Rating Demo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = 7X2PJ6H6YM;
 				INFOPLIST_FILE = "Rating Demo/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.onthepursuit.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Rating-Demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
