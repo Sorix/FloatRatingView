@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FloatRatingView
 
 class ViewController: UIViewController {
     
