@@ -1,15 +1,8 @@
-//
-//  FloatRatingView.swift
-//  Rating Demo
-//
-//  Created by Glen Yi on 2014-09-05.
-//  Copyright (c) 2014 On The Pursuit. All rights reserved.
-//
-
 import UIKit
 
-/// A simple rating view that can set whole, half or floating point ratings.
+/// A simple rating control that can set whole, half or floating point ratings.
 @IBDesignable open class FloatRatingView: UIControl {
+	@available(*, deprecated, message: "Use the Target-Action design pattern from UIControl, don't use delegate methods")
     open weak var delegate: FloatRatingViewDelegate?
 
 	// MARK: - @IBInspectable Internal variables

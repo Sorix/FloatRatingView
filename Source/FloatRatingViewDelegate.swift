@@ -1,15 +1,15 @@
 import Foundation
 
-@available(*, deprecated, message: "Use the Target-Action design pattern, like it is used at UIButton")
+@available(*, deprecated, message: "Use the Target-Action design pattern from UIControl")
 public protocol FloatRatingViewDelegate: class {
 	/// Returns the rating value when touch events end
+	@available(*, deprecated, message: "Use `addTarget(target:action:for:)` or Storyboard's valueChanged connection")
 	func floatRatingView(_ ratingView: FloatRatingView, didUpdate rating: Double)
 	
 	/// Returns the rating value as the user pans
-	@available(*, deprecated, message: "To receive continuous updates set isContinuous to true")
+	@available(*, deprecated, message: "Use `addTarget(target:action:for:)` or Storyboard's valueChanged connection and set `isContinuous` to `true`")
 	func floatRatingView(_ ratingView: FloatRatingView, isUpdating rating: Double)
 }
-
 
 public extension FloatRatingViewDelegate {
 	func floatRatingView(_ ratingView: FloatRatingView, isUpdating rating: Double) {}
