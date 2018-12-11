@@ -92,7 +92,11 @@ open class FloatRatingView: UIControl {
     }
 
     /// Sets whether or not the rating view can be changed by panning.
-    @IBInspectable open var editable: Bool = true
+	@available(*, deprecated, renamed: "isEnabled")
+	@IBInspectable open var editable: Bool {
+		get { return isEnabled }
+		set { isEnabled = newValue }
+	}
 
     // MARK: Type
 
@@ -256,7 +260,6 @@ open class FloatRatingView: UIControl {
         
         refresh()
     }
-
 
     // MARK: Touch events
 	
