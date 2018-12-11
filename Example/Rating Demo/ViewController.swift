@@ -24,12 +24,9 @@ class ViewController: UIViewController {
          all properties can be set directly in Interface Builder **/
         floatRatingView.contentMode = UIViewContentMode.scaleAspectFit
         floatRatingView.type = .halfRatings
-        
-        // Segmented control init
-        ratingSegmentedControl.selectedSegmentIndex = 1
-        
+		
         // Labels init
-        ratingLabel.text = String(floatRatingView.rating)
+        ratingLabel.text = floatRatingView.rating.formatted
     }
 
     @IBAction func ratingTypeChanged(_ sender: UISegmentedControl) {
@@ -45,7 +42,21 @@ class ViewController: UIViewController {
         }
     }
 	
+	@IBAction func updateTypeChanged(_ sender: UISegmentedControl) {
+		switch sender.selectedSegmentIndex {
+		case 0: floatRatingView.isContinuous = false
+		case 1: floatRatingView.isContinuous = true
+		default: return
+		}
+	}
+	
 	@IBAction func ratingChanged(_ sender: FloatRatingView) {
-		ratingLabel.text = String(sender.rating)
+		ratingLabel.text = sender.rating.formatted
+	}
+}
+
+private extension Double {
+	var formatted: String {
+		return String(format: "%.2f", self)
 	}
 }

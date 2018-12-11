@@ -88,7 +88,7 @@ import UIKit
 	///
 	/// If true, the control triggers the associated target’s action method repeatedly. If false, the control triggers the associated action method just once, when the user releases the control to set the final value.
 	/// The default value of this property is true.
-	@IBInspectable var isContinuous: Bool = false
+	@IBInspectable open var isContinuous: Bool = false
 	
 	// MARK: Internal variables
 	
