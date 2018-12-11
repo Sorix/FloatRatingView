@@ -1,5 +1,5 @@
 # RatingControl
-A simple **@IBDesignable** rating control for iOS written in Swift. Supports whole, half or floating point values.
+A simple `@IBDesignable` rating control for iOS written in Swift. Supports whole, half or floating point values.
 
 ![iOS Demo](https://user-images.githubusercontent.com/5610904/49809977-470d8400-fd71-11e8-92fe-456c090be727.gif)
 
