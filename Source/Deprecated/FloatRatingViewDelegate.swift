@@ -4,14 +4,9 @@ import Foundation
 @objc public protocol FloatRatingViewDelegate: class {
 	/// Returns the rating value when touch events end
 	@available(*, deprecated, message: "Use `addTarget(target:action:for:)` or Storyboard's valueChanged connection")
-	@objc func floatRatingView(_ ratingView: FloatRatingView, didUpdate rating: Double)
+	@objc optional func floatRatingView(_ ratingView: FloatRatingView, didUpdate rating: Double)
 	
 	/// Returns the rating value as the user pans
 	@available(*, deprecated, message: "Use `addTarget(target:action:for:)` or Storyboard's valueChanged connection and set `isContinuous` to `true`")
-	@objc func floatRatingView(_ ratingView: FloatRatingView, isUpdating rating: Double)
-}
-
-public extension FloatRatingViewDelegate {
-	func floatRatingView(_ ratingView: FloatRatingView, isUpdating rating: Double) {}
-	func floatRatingView(_ ratingView: FloatRatingView, didUpdate rating: Double) {}
+	@objc optional func floatRatingView(_ ratingView: FloatRatingView, isUpdating rating: Double)
 }

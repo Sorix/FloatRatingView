@@ -178,12 +178,12 @@ import UIKit
 	open override func endTracking(_ touch: UITouch?, with event: UIEvent?) {
 		super.endTracking(touch, with: event)
 		sendActions(for: [.valueChanged])
-		delegate?.floatRatingView(self, didUpdate: rating)
+		delegate?.floatRatingView?(self, didUpdate: rating)
 	}
 	
 	open override func cancelTracking(with event: UIEvent?) {
 		super.cancelTracking(with: event)
 		sendActions(for: [.valueChanged])
-		delegate?.floatRatingView(self, didUpdate: rating)
+		delegate?.floatRatingView?(self, didUpdate: rating)
 	}
 }
