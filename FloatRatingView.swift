@@ -80,10 +80,7 @@ open class FloatRatingView: UIView {
                 refresh()
             }
         }
-    }
-
-    /// Minimum image size.
-    @IBInspectable open var minImageSize: CGSize = CGSize(width: 5.0, height: 5.0)
+	}
 
     /// Set the current rating.
     @IBInspectable open var rating: Double = 0 {
@@ -186,24 +183,6 @@ open class FloatRatingView: UIView {
             }
         }
     }
-    
-    // Calculates the ideal ImageView size in a given CGSize
-    private func sizeForImage(_ image: UIImage, inSize size: CGSize) -> CGSize {
-        let imageRatio = image.size.width / image.size.height
-        let viewRatio = size.width / size.height
-        
-        if imageRatio < viewRatio {
-            let scale = size.height / image.size.height
-            let width = scale * image.size.width
-            
-            return CGSize(width: width, height: size.height)
-        } else {
-            let scale = size.width / image.size.width
-            let height = scale * image.size.height
-            
-            return CGSize(width: size.width, height: height)
-        }
-    }
 
     // Calculates new rating based on touch location in view
     private func updateLocation(_ touch: UITouch) {
@@ -261,20 +240,13 @@ open class FloatRatingView: UIView {
     override open func layoutSubviews() {
         super.layoutSubviews()
 
-        guard let emptyImage = emptyImage else {
-            return
-        }
-
-        let desiredImageWidth = frame.size.width / CGFloat(emptyImageViews.count)
-        let maxImageWidth = max(minImageSize.width, desiredImageWidth)
-        let maxImageHeight = max(minImageSize.height, frame.size.height)
-        let imageViewSize = sizeForImage(emptyImage, inSize: CGSize(width: maxImageWidth, height: maxImageHeight))
-        let imageXOffset = (frame.size.width - (imageViewSize.width * CGFloat(emptyImageViews.count))) /
-                            CGFloat((emptyImageViews.count - 1))
-        
+        let desiredImageWidth = frame.size.width / CGFloat(maxRating)
+		
+		var xOffset: CGFloat = 0
         for i in 0..<maxRating {
-            let imageFrame = CGRect(x: i == 0 ? 0 : CGFloat(i)*(imageXOffset+imageViewSize.width), y: 0, width: imageViewSize.width, height: imageViewSize.height)
-            
+			xOffset = CGFloat(i) * desiredImageWidth
+			let imageFrame = CGRect(x: xOffset, y: 0, width: desiredImageWidth, height: frame.size.height)
+			
             var imageView = emptyImageViews[i]
             imageView.frame = imageFrame
             
