@@ -1,4 +1,4 @@
 import Foundation
 
-@available(*, deprecated, renamed: "RatingControl")
+@available(*, deprecated: 3.5, renamed: "RatingControl")
 public typealias FloatRatingView = RatingControl
