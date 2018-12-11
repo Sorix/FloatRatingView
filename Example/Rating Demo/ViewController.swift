@@ -2,17 +2,17 @@ import UIKit
 import RatingControl
 
 class ViewController: UIViewController {
-	@IBOutlet var ratingSegmentedControl: UISegmentedControl!
-	@IBOutlet var floatRatingView: RatingControl!
-	@IBOutlet var ratingLabel: UILabel!
+	@IBOutlet weak var ratingSegmentedControl: UISegmentedControl!
+	@IBOutlet weak var updateTypeSegmentedControl: UISegmentedControl!
+	@IBOutlet weak var floatRatingView: RatingControl!
+	@IBOutlet weak var ratingLabel: UILabel!
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		floatRatingView.type = .halfRatings
-		
-		// Labels init
-		ratingLabel.text = floatRatingView.rating.formatted
+		ratingTypeChanged(ratingSegmentedControl)
+		updateTypeChanged(updateTypeSegmentedControl)
+		ratingChanged(floatRatingView)
 	}
 	
 	@IBAction func ratingTypeChanged(_ sender: UISegmentedControl) {

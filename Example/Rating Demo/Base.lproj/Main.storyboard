@@ -21,7 +21,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="N1p-RI-13B">
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="N1p-RI-13B">
                                 <rect key="frame" x="16" y="68" width="343" height="218"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Configuration" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NTk-BU-WGJ">
@@ -48,7 +48,6 @@
                                             <segment title="Continuous updates"/>
                                         </segments>
                                         <connections>
-                                            <action selector="ratingTypeChanged:" destination="vXZ-lx-hvc" eventType="valueChanged" id="ovl-2d-hEv"/>
                                             <action selector="updateTypeChanged:" destination="vXZ-lx-hvc" eventType="valueChanged" id="kZG-6j-K8m"/>
                                         </connections>
                                     </segmentedControl>
@@ -58,10 +57,10 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7DG-mp-jZP" userLabel="Grouped View">
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7DG-mp-jZP" userLabel="Grouped View">
                                         <rect key="frame" x="0.0" y="168" width="343" height="50"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oDX-Ln-wBU" customClass="RatingControl" customModule="RatingControl">
+                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oDX-Ln-wBU" customClass="RatingControl" customModule="RatingControl">
                                                 <rect key="frame" x="0.0" y="0.0" width="277" height="50"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <userDefinedRuntimeAttributes>
@@ -81,8 +80,8 @@
                                                     <action selector="ratingChanged:" destination="vXZ-lx-hvc" eventType="valueChanged" id="aYk-fk-Rxh"/>
                                                 </connections>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lfK-LJ-vUZ">
-                                                <rect key="frame" x="293" y="14.999999999999998" width="50" height="20.333333333333329"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="3.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lfK-LJ-vUZ">
+                                                <rect key="frame" x="293" y="15" width="50" height="20.333333333333329"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="xKA-Rf-kCg"/>
                                                 </constraints>
@@ -117,6 +116,7 @@
                         <outlet property="floatRatingView" destination="oDX-Ln-wBU" id="fk7-b5-oiR"/>
                         <outlet property="ratingLabel" destination="lfK-LJ-vUZ" id="hJv-P3-nyH"/>
                         <outlet property="ratingSegmentedControl" destination="WOu-Kg-Xd8" id="tGy-gw-CHm"/>
+                        <outlet property="updateTypeSegmentedControl" destination="MKl-k7-OVB" id="Lg2-2b-C6M"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
