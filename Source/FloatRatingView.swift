@@ -3,79 +3,79 @@ import UIKit
 /// A simple rating control that can set whole, half or floating point ratings.
 @IBDesignable open class FloatRatingView: UIControl {
 	@available(*, deprecated, message: "Use the Target-Action design pattern from UIControl, don't use delegate methods")
-    open weak var delegate: FloatRatingViewDelegate?
-
+	open weak var delegate: FloatRatingViewDelegate?
+	
 	// MARK: - @IBInspectable Internal variables
 	
-    /// Sets the empty image (e.g. a star outline)
-    @IBInspectable open var emptyImage: UIImage? {
-        didSet {
-            // Update empty image views
-            for imageView in emptyImageViews {
-                imageView.image = emptyImage
-            }
-            refreshMaskLayer()
-        }
-    }
-
-    /// Sets the full image that is overlayed on top of the empty image.
-    /// Should be same size and shape as the empty image.
-    @IBInspectable open var fullImage: UIImage? {
-        didSet {
-            // Update full image views
-            for imageView in fullImageViews {
-                imageView.image = fullImage
-            }
-            refreshMaskLayer()
-        }
-    }
-
-    /// Sets the empty and full image view content mode.
-    open var imageContentMode: UIView.ContentMode = UIView.ContentMode.scaleAspectFit
-
-    /// Minimum rating.
-    @IBInspectable open var minRating: Int  = 0 {
-        didSet {
-            // Update current rating if needed
-            if rating < Double(minRating) {
-                rating = Double(minRating)
-                refreshMaskLayer()
-            }
-        }
-    }
-
-    /// Max rating value.
-    @IBInspectable open var maxRating: Int = 5 {
-        didSet {
-            if maxRating != oldValue {
-                removeImageViews()
-                initImageViews()
-                
-                // Relayout and refresh
-                setNeedsLayout()
-                refreshMaskLayer()
-            }
-        }
+	/// Sets the empty image (e.g. a star outline)
+	@IBInspectable open var emptyImage: UIImage? {
+		didSet {
+			// Update empty image views
+			for imageView in emptyImageViews {
+				imageView.image = emptyImage
+			}
+			refreshMaskLayer()
+		}
 	}
-
-    /// Set the current rating.
-    @IBInspectable open var rating: Double = 0 {
-        didSet {
-            if rating != oldValue {
-                refreshMaskLayer()
-            }
-        }
-    }
-
-    /// Sets whether or not the rating view can be changed by panning.
+	
+	/// Sets the full image that is overlayed on top of the empty image.
+	/// Should be same size and shape as the empty image.
+	@IBInspectable open var fullImage: UIImage? {
+		didSet {
+			// Update full image views
+			for imageView in fullImageViews {
+				imageView.image = fullImage
+			}
+			refreshMaskLayer()
+		}
+	}
+	
+	/// Sets the empty and full image view content mode.
+	open var imageContentMode: UIView.ContentMode = UIView.ContentMode.scaleAspectFit
+	
+	/// Minimum rating.
+	@IBInspectable open var minRating: Int  = 0 {
+		didSet {
+			// Update current rating if needed
+			if rating < Double(minRating) {
+				rating = Double(minRating)
+				refreshMaskLayer()
+			}
+		}
+	}
+	
+	/// Max rating value.
+	@IBInspectable open var maxRating: Int = 5 {
+		didSet {
+			if maxRating != oldValue {
+				removeImageViews()
+				initImageViews()
+				
+				// Relayout and refresh
+				setNeedsLayout()
+				refreshMaskLayer()
+			}
+		}
+	}
+	
+	/// Set the current rating.
+	@IBInspectable open var rating: Double = 0 {
+		didSet {
+			if rating != oldValue {
+				refreshMaskLayer()
+			}
+		}
+	}
+	
+	/// Sets whether or not the rating view can be changed by panning.
 	@available(*, deprecated, renamed: "isEnabled")
 	@IBInspectable open var editable: Bool {
 		get { return isEnabled }
 		set { isEnabled = newValue }
 	}
-
-    /// Float rating view type
-    @IBInspectable open var type: FloatRatingViewType = .wholeRatings
+	
+	/// Float rating view type
+	@IBInspectable open var type: FloatRatingViewType = .wholeRatings
 	
 	/// A Boolean value indicating whether changes in the slider’s value generate continuous update events.
 	///
@@ -90,20 +90,20 @@ import UIKit
 	
 	/// Array of full image views
 	internal var fullImageViews: [UIImageView] = []
-    
-    // MARK: - Initializations
-    
-    required override public init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        initImageViews()
-    }
-    
-    required public init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        
-        initImageViews()
-    }
+	
+	// MARK: - Initializations
+	
+	required override public init(frame: CGRect) {
+		super.init(frame: frame)
+		
+		initImageViews()
+	}
+	
+	required public init?(coder aDecoder: NSCoder) {
+		super.init(coder: aDecoder)
+		
+		initImageViews()
+	}
 	
 	// MARK: -
 	
