@@ -1,7 +1,7 @@
 import UIKit
 
 /// A simple rating control that can set whole, half or floating point ratings.
-@IBDesignable open class FloatRatingView: UIControl {
+@IBDesignable open class RatingControl: UIControl {
 	@available(*, deprecated, message: "Use the Target-Action design pattern from UIControl, don't use delegate methods")
 	open weak var delegate: FloatRatingViewDelegate?
 	

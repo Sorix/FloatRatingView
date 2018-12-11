@@ -3,5 +3,5 @@ target 'Rating Demo' do
   use_frameworks!
 
   # Pods for Rating Demo
-  pod 'FloatRatingView', :path => '../'
+  pod 'RatingControl', :path => '../'
 end

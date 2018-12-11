@@ -1,9 +1,9 @@
 import UIKit
-import FloatRatingView
+import RatingControl
 
 class ViewController: UIViewController {
 	@IBOutlet var ratingSegmentedControl: UISegmentedControl!
-	@IBOutlet var floatRatingView: FloatRatingView!
+	@IBOutlet var floatRatingView: RatingControl!
 	@IBOutlet var ratingLabel: UILabel!
 	
 	override func viewDidLoad() {
@@ -32,7 +32,7 @@ class ViewController: UIViewController {
 		}
 	}
 	
-	@IBAction func ratingChanged(_ sender: FloatRatingView) {
+	@IBAction func ratingChanged(_ sender: RatingControl) {
 		ratingLabel.text = sender.rating.formatted
 	}
 }

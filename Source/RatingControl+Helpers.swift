@@ -1,6 +1,6 @@
 import UIKit
 
-internal extension FloatRatingView {
+internal extension RatingControl {
 	func initImageViews() {
 		guard emptyImageViews.isEmpty && fullImageViews.isEmpty else {
 			return

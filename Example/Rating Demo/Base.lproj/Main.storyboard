@@ -22,7 +22,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="N1p-RI-13B">
-                                <rect key="frame" x="16" y="68" width="343" height="296"/>
+                                <rect key="frame" x="16" y="68" width="343" height="218"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Configuration" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NTk-BU-WGJ">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="24"/>
@@ -59,10 +59,10 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7DG-mp-jZP" userLabel="Grouped View">
-                                        <rect key="frame" x="0.0" y="168" width="343" height="128"/>
+                                        <rect key="frame" x="0.0" y="168" width="343" height="50"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oDX-Ln-wBU" customClass="FloatRatingView" customModule="FloatRatingView">
-                                                <rect key="frame" x="0.0" y="0.0" width="277" height="128"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oDX-Ln-wBU" customClass="RatingControl" customModule="RatingControl">
+                                                <rect key="frame" x="0.0" y="0.0" width="277" height="50"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="image" keyPath="emptyImage" value="StarEmpty"/>
@@ -82,9 +82,9 @@
                                                 </connections>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lfK-LJ-vUZ">
-                                                <rect key="frame" x="293" y="54.000000000000007" width="50" height="20.333333333333336"/>
+                                                <rect key="frame" x="293" y="14.999999999999998" width="50" height="20.333333333333329"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="50" id="xKA-Rf-kCg"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="xKA-Rf-kCg"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
