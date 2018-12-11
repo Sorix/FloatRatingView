@@ -9,13 +9,13 @@ internal extension FloatRatingView {
 		// Add new image views
 		for _ in 0..<maxRating {
 			let emptyImageView = UIImageView()
-			emptyImageView.contentMode = imageContentMode
+			emptyImageView.contentMode = contentMode
 			emptyImageView.image = emptyImage
 			emptyImageViews.append(emptyImageView)
 			addSubview(emptyImageView)
 			
 			let fullImageView = UIImageView()
-			fullImageView.contentMode = imageContentMode
+			fullImageView.contentMode = contentMode
 			fullImageView.image = fullImage
 			fullImageViews.append(fullImageView)
 			addSubview(fullImageView)
