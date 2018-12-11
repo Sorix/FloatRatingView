@@ -73,10 +73,13 @@ import UIKit
 	
 	/// Sets whether or not the rating view can be changed by panning.
 	@available(*, deprecated, renamed: "isEnabled")
-	@IBInspectable open var editable: Bool {
+	open var editable: Bool {
 		get { return isEnabled }
 		set { isEnabled = newValue }
 	}
+	
+	@available(*, deprecated: 3.5, message: "This value is ignored")
+	open var minImageSize: CGSize = CGSize(width: 5.0, height: 5.0)
 	
 	/// Float rating view type
 	@IBInspectable open var type: FloatRatingViewType = .wholeRatings
