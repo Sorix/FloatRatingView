@@ -10,11 +10,9 @@ import UIKit
 import FloatRatingView
 
 class ViewController: UIViewController {
-    
     @IBOutlet var ratingSegmentedControl: UISegmentedControl!
     @IBOutlet var floatRatingView: FloatRatingView!
-    @IBOutlet var liveLabel: UILabel!
-    @IBOutlet var updatedLabel: UILabel!
+    @IBOutlet var ratingLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +22,6 @@ class ViewController: UIViewController {
 
         /** Note: With the exception of contentMode, type and delegate,
          all properties can be set directly in Interface Builder **/
-        floatRatingView.delegate = self
         floatRatingView.contentMode = UIViewContentMode.scaleAspectFit
         floatRatingView.type = .halfRatings
         
@@ -32,8 +29,7 @@ class ViewController: UIViewController {
         ratingSegmentedControl.selectedSegmentIndex = 1
         
         // Labels init
-        liveLabel.text = String(format: "%.2f", self.floatRatingView.rating)
-        updatedLabel.text = String(format: "%.2f", self.floatRatingView.rating)
+        ratingLabel.text = String(floatRatingView.rating)
     }
 
     @IBAction func ratingTypeChanged(_ sender: UISegmentedControl) {
@@ -48,19 +44,8 @@ class ViewController: UIViewController {
             floatRatingView.type = .wholeRatings
         }
     }
+	
+	@IBAction func ratingChanged(_ sender: FloatRatingView) {
+		ratingLabel.text = String(sender.rating)
+	}
 }
-
-extension ViewController: FloatRatingViewDelegate {
-
-    // MARK: FloatRatingViewDelegate
-    
-    func floatRatingView(_ ratingView: FloatRatingView, isUpdating rating: Double) {
-        liveLabel.text = String(format: "%.2f", self.floatRatingView.rating)
-    }
-    
-    func floatRatingView(_ ratingView: FloatRatingView, didUpdate rating: Double) {
-        updatedLabel.text = String(format: "%.2f", self.floatRatingView.rating)
-    }
-    
-}
-

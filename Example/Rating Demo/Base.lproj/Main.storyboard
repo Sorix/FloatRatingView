@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -24,17 +22,31 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Float Rating View" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MIn-fz-guV">
-                                <rect key="frame" x="105.33333333333334" y="95.666666666666671" width="164.66666666666666" height="26.666666666666657"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <rect key="frame" x="76.333333333333329" y="44" width="222.66666666666669" height="36"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gBb-xE-SV5" customClass="FloatRatingView" customModule="Rating_Demo" customModuleProvider="target">
-                                <rect key="frame" x="16" y="248.66666666666669" width="343" height="44.000000000000057"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="XSf-yx-MWT"/>
-                                </constraints>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lfK-LJ-vUZ">
+                                <rect key="frame" x="168" y="186" width="39" height="31.333333333333343"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="WOu-Kg-Xd8">
+                                <rect key="frame" x="16" y="88" width="343" height="29"/>
+                                <segments>
+                                    <segment title="Whole"/>
+                                    <segment title="Half"/>
+                                    <segment title="Float"/>
+                                </segments>
+                                <connections>
+                                    <action selector="ratingTypeChanged:" destination="vXZ-lx-hvc" eventType="valueChanged" id="nuD-6K-mtB"/>
+                                </connections>
+                            </segmentedControl>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oDX-Ln-wBU" customClass="FloatRatingView" customModule="FloatRatingView">
+                                <rect key="frame" x="16" y="132" width="343" height="22"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="image" keyPath="emptyImage" value="StarEmpty"/>
                                     <userDefinedRuntimeAttribute type="image" keyPath="fullImage" value="StarFull"/>
@@ -45,81 +57,38 @@
                                         <integer key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="rating">
-                                        <real key="value" value="2.5"/>
+                                        <real key="value" value="3"/>
                                     </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="editable" value="YES"/>
                                 </userDefinedRuntimeAttributes>
-                            </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Live Rating:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nH0-To-tP5">
-                                <rect key="frame" x="71.666666666666657" y="329.66666666666669" width="88.999999999999972" height="20.666666666666629"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Updated Rating:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fmp-IB-18A">
-                                <rect key="frame" x="36" y="358.33333333333331" width="124.66666666666666" height="20.333333333333371"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lfK-LJ-vUZ">
-                                <rect key="frame" x="168.66666666666666" y="329.66666666666669" width="24" height="20.666666666666629"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o9T-8V-Y0b">
-                                <rect key="frame" x="168.66666666666666" y="358.33333333333331" width="24" height="20.333333333333371"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="WOu-Kg-Xd8">
-                                <rect key="frame" x="16" y="191.33333333333334" width="343" height="29"/>
-                                <segments>
-                                    <segment title="Whole"/>
-                                    <segment title="Half"/>
-                                    <segment title="Float"/>
-                                </segments>
                                 <connections>
-                                    <action selector="ratingTypeChanged:" destination="vXZ-lx-hvc" eventType="valueChanged" id="nuD-6K-mtB"/>
+                                    <action selector="ratingChanged:" destination="vXZ-lx-hvc" eventType="valueChanged" id="aYk-fk-Rxh"/>
                                 </connections>
-                            </segmentedControl>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="WOu-Kg-Xd8" firstAttribute="leading" secondItem="gBb-xE-SV5" secondAttribute="leading" id="17j-zf-aJf"/>
+                            <constraint firstItem="WOu-Kg-Xd8" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="1dE-E5-j5b"/>
                             <constraint firstAttribute="centerX" secondItem="MIn-fz-guV" secondAttribute="centerX" id="2sz-VJ-Sum"/>
-                            <constraint firstItem="nH0-To-tP5" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="10" id="7kh-py-cp6"/>
-                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="o9T-8V-Y0b" secondAttribute="trailing" constant="10" id="FXz-Xl-UWl"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="gBb-xE-SV5" secondAttribute="trailing" id="HqI-pe-Woa"/>
-                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="lfK-LJ-vUZ" secondAttribute="trailing" constant="10" id="Jw0-7o-B27"/>
-                            <constraint firstItem="nH0-To-tP5" firstAttribute="centerY" secondItem="lfK-LJ-vUZ" secondAttribute="centerY" id="Qce-1N-OoR"/>
-                            <constraint firstItem="nH0-To-tP5" firstAttribute="top" secondItem="gBb-xE-SV5" secondAttribute="bottom" multiplier="1.1" constant="8" symbolic="YES" id="WBi-0z-7Xt"/>
-                            <constraint firstItem="Fmp-IB-18A" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="20" id="XJ9-fs-ydL"/>
-                            <constraint firstItem="gBb-xE-SV5" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" multiplier="2/3" id="cCT-rx-HVA"/>
-                            <constraint firstItem="WOu-Kg-Xd8" firstAttribute="top" secondItem="MIn-fz-guV" secondAttribute="bottom" multiplier="1.5" constant="8" symbolic="YES" id="dtF-N7-OfC"/>
-                            <constraint firstItem="lfK-LJ-vUZ" firstAttribute="leading" secondItem="o9T-8V-Y0b" secondAttribute="leading" id="egU-qB-aoN"/>
-                            <constraint firstItem="nH0-To-tP5" firstAttribute="trailing" secondItem="Fmp-IB-18A" secondAttribute="trailing" id="kcN-t1-bo4"/>
-                            <constraint firstItem="o9T-8V-Y0b" firstAttribute="leading" secondItem="Fmp-IB-18A" secondAttribute="trailing" constant="8" symbolic="YES" id="qpk-wg-Yhd"/>
-                            <constraint firstItem="gBb-xE-SV5" firstAttribute="top" secondItem="WOu-Kg-Xd8" secondAttribute="bottom" multiplier="1.1" constant="8" symbolic="YES" id="rmy-NN-WLa"/>
-                            <constraint firstItem="WOu-Kg-Xd8" firstAttribute="trailing" secondItem="gBb-xE-SV5" secondAttribute="trailing" id="v6k-jU-whr"/>
-                            <constraint firstItem="Fmp-IB-18A" firstAttribute="top" secondItem="nH0-To-tP5" secondAttribute="bottom" constant="8" symbolic="YES" id="wd2-bK-XQO"/>
-                            <constraint firstItem="o9T-8V-Y0b" firstAttribute="centerY" secondItem="Fmp-IB-18A" secondAttribute="centerY" id="yqm-D4-tbp"/>
-                            <constraint firstItem="gBb-xE-SV5" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="zCi-Ir-4SF"/>
+                            <constraint firstItem="oDX-Ln-wBU" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="67J-Gl-bJr"/>
+                            <constraint firstItem="lfK-LJ-vUZ" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="9DM-5X-HQo"/>
+                            <constraint firstItem="WOu-Kg-Xd8" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="DHi-Ij-SBm"/>
+                            <constraint firstItem="MIn-fz-guV" firstAttribute="top" secondItem="DNt-X1-XBz" secondAttribute="bottom" id="KB2-Nn-XNL"/>
+                            <constraint firstItem="oDX-Ln-wBU" firstAttribute="top" secondItem="WOu-Kg-Xd8" secondAttribute="bottom" constant="16" id="SYI-Y6-r2g"/>
+                            <constraint firstItem="oDX-Ln-wBU" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="Vqx-Gc-qOp"/>
+                            <constraint firstItem="WOu-Kg-Xd8" firstAttribute="top" secondItem="MIn-fz-guV" secondAttribute="bottom" constant="8" symbolic="YES" id="dtF-N7-OfC"/>
+                            <constraint firstItem="lfK-LJ-vUZ" firstAttribute="top" secondItem="oDX-Ln-wBU" secondAttribute="bottom" constant="32" id="ear-QB-tsc"/>
                         </constraints>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <connections>
-                        <outlet property="floatRatingView" destination="gBb-xE-SV5" id="0eS-2F-i06"/>
-                        <outlet property="liveLabel" destination="lfK-LJ-vUZ" id="wKr-PP-3KJ"/>
+                        <outlet property="floatRatingView" destination="oDX-Ln-wBU" id="fk7-b5-oiR"/>
+                        <outlet property="ratingLabel" destination="lfK-LJ-vUZ" id="hJv-P3-nyH"/>
                         <outlet property="ratingSegmentedControl" destination="WOu-Kg-Xd8" id="tGy-gw-CHm"/>
-                        <outlet property="updatedLabel" destination="o9T-8V-Y0b" id="frW-so-Sun"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="132" y="92"/>
+            <point key="canvasLocation" x="132" y="91.625615763546804"/>
         </scene>
     </scenes>
     <resources>
