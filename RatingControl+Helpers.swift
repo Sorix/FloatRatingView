@@ -1,7 +1,7 @@
 import UIKit
 
 internal extension RatingControl {
-	// Calculates new rating based on touch location in view
+	/// Get rating based on touch
 	func rating(for touch: UITouch) -> Double {
 		let touchLocation = touch.location(in: self)
 		var newRating: Double = 0
@@ -35,6 +35,10 @@ internal extension RatingControl {
 		}
 	}
 	
+	/// Change rating, send actions, delegate events and haptics.
+	///
+	/// - Parameters:
+	///   - type: if type is `continue` rating will be updated only if `isContinuous` is true. If type is `final` rating will be updated always.
 	func handle(touch: UITouch, type: TouchType) {
 		let newRating = rating(for: touch)
 

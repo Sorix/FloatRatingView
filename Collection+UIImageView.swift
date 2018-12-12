@@ -1,6 +1,7 @@
 import UIKit
 
 extension Collection where Iterator.Element: UIImageView {
+	/// - Parameter visibleNumberOfImages: if number is not integer, part of image will be masked
 	func setVisible(numberOfImages visibleNumberOfImages: Double) {
 		for (i, imageView) in self.enumerated() {
 			if visibleNumberOfImages >= Double(i+1) {
