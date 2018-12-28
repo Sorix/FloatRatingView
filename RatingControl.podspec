@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
     spec.name                   = 'RatingControl'
-    spec.version                = '4.0'
+    spec.version                = '4.0.1'
     spec.summary                = 'Whole, half or floating point ratings control written in Swift.'
     spec.homepage               = 'https://github.com/Sorix/RatingControl'
     spec.license                = 'MIT'

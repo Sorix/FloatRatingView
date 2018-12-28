@@ -2,7 +2,7 @@ import UIKit
 
 /// A simple rating control that can set whole, half or floating point ratings.
 @IBDesignable open class RatingControl: UIControl {
-	@available(*, deprecated: 3.5, message: "Use the Target-Action design pattern from UIControl, don't use delegate methods")
+	@available(*, deprecated: 4.0, message: "Use the Target-Action design pattern from UIControl, don't use delegate methods")
 	open weak var delegate: FloatRatingViewDelegate?
 	
 	// MARK: - @IBInspectable Internal variables
@@ -26,7 +26,7 @@ import UIKit
 	}
 	
 	/// Sets the empty and full image view content mode.
-	@available(*, deprecated: 3.5, renamed: "contentMode")
+	@available(*, deprecated: 4.0, renamed: "contentMode")
 	open var imageContentMode: UIView.ContentMode {
 		get { return contentMode }
 		set { contentMode = newValue }
@@ -74,13 +74,13 @@ import UIKit
 	}
 	
 	/// Sets whether or not the rating view can be changed by panning.
-	@available(*, deprecated: 3.5, renamed: "isEnabled")
+	@available(*, deprecated: 4.0, renamed: "isEnabled")
 	open var editable: Bool {
 		get { return isEnabled }
 		set { isEnabled = newValue }
 	}
 	
-	@available(*, deprecated: 3.5, message: "This value is ignored")
+	@available(*, deprecated: 4.0, message: "This value is ignored")
 	open var minImageSize: CGSize = CGSize(width: 5.0, height: 5.0)
 	
 	/// Float rating view type
