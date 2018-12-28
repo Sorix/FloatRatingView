@@ -4,11 +4,17 @@ A simple `@IBDesignable` rating control for iOS written in Swift. Supports whole
 ![iOS Demo](https://user-images.githubusercontent.com/5610904/49809977-470d8400-fd71-11e8-92fe-456c090be727.gif)
 
 ## Installation
-**FloatingRatingView** is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
+Framework is available through [CocoaPods](http://cocoapods.org). To install
+it, simply add the following line to your **Podfile**:
 
 ```ruby
-pod 'RatingControl', '~> 4.0'
+pod 'RatingControl', '~> 4.0.1'
+```
+
+Framework is available through [Carthage](https://github.com/Carthage/Carthage). To install
+it, simply add the following line to your **Cartfile**:
+```
+github "Sorix/RatingControl" ~> 4.0.1
 ```
 
 ## Usage
