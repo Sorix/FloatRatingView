@@ -2,7 +2,7 @@ import UIKit
 
 /// A simple rating control that can set whole, half or floating point ratings.
 @IBDesignable open class RatingControl: UIControl {
-	@available(*, deprecated: 3.5, message: "Use the Target-Action design pattern from UIControl, don't use delegate methods")
+	@available(*, deprecated: 4.0, message: "Use the Target-Action design pattern from UIControl, don't use delegate methods")
 	open weak var delegate: FloatRatingViewDelegate?
 	
 	// MARK: - @IBInspectable Internal variables
@@ -10,11 +10,8 @@ import UIKit
 	/// Sets the empty image (e.g. a star outline)
 	@IBInspectable open var emptyImage: UIImage? {
 		didSet {
-			// Update empty image views
-			for imageView in emptyImageViews {
-				imageView.image = emptyImage
-			}
-			refreshMaskLayer(rating: rating)
+			imageViewStorage.setEmptyImage(emptyImage)
+			imageViewStorage.setVisible(numberOfImages: rating)
 		}
 	}
 	
@@ -23,15 +20,13 @@ import UIKit
 	@IBInspectable open var fullImage: UIImage? {
 		didSet {
 			// Update full image views
-			for imageView in fullImageViews {
-				imageView.image = fullImage
-			}
-			refreshMaskLayer(rating: rating)
+			imageViewStorage.setFullImage(fullImage)
+			imageViewStorage.setVisible(numberOfImages: rating)
 		}
 	}
 	
 	/// Sets the empty and full image view content mode.
-	@available(*, deprecated: 3.5, renamed: "contentMode")
+	@available(*, deprecated: 4.0, renamed: "contentMode")
 	open var imageContentMode: UIView.ContentMode {
 		get { return contentMode }
 		set { contentMode = newValue }
@@ -43,7 +38,7 @@ import UIKit
 			// Update current rating if needed
 			if rating < Double(minRating) {
 				rating = Double(minRating)
-				refreshMaskLayer(rating: rating)
+				imageViewStorage.setVisible(numberOfImages: rating)
 			}
 		}
 	}
@@ -52,12 +47,13 @@ import UIKit
 	@IBInspectable open var maxRating: Int = 5 {
 		didSet {
 			if maxRating != oldValue {
-				removeImageViews()
-				initImageViews()
+				imageViewStorage.removeImageViews(from: self)
 				
+				imageViewStorage = ImageViewStorage(numberOfImages: maxRating, emptyImage: emptyImage, fullImage: fullImage, contentMode: contentMode)
+			
 				// Relayout and refresh
 				setNeedsLayout()
-				refreshMaskLayer(rating: rating)
+				imageViewStorage.setVisible(numberOfImages: rating)
 			}
 		}
 	}
@@ -66,19 +62,25 @@ import UIKit
 	@IBInspectable open var rating: Double = 0 {
 		didSet {
 			if rating != oldValue {
-				refreshMaskLayer(rating: rating)
+				imageViewStorage.setVisible(numberOfImages: rating)
 			}
 		}
 	}
 	
+	open override var contentMode: UIView.ContentMode {
+		didSet {
+			imageViewStorage.setContentMode(contentMode)
+		}
+	}
+	
 	/// Sets whether or not the rating view can be changed by panning.
-	@available(*, deprecated: 3.5, renamed: "isEnabled")
+	@available(*, deprecated: 4.0, renamed: "isEnabled")
 	open var editable: Bool {
 		get { return isEnabled }
 		set { isEnabled = newValue }
 	}
 	
-	@available(*, deprecated: 3.5, message: "This value is ignored")
+	@available(*, deprecated: 4.0, message: "This value is ignored")
 	open var minImageSize: CGSize = CGSize(width: 5.0, height: 5.0)
 	
 	/// Float rating view type
@@ -92,11 +94,7 @@ import UIKit
 	
 	// MARK: Internal variables
 	
-	/// Array of empty image views
-	internal var emptyImageViews: [UIImageView] = []
-	
-	/// Array of full image views
-	internal var fullImageViews: [UIImageView] = []
+	internal var imageViewStorage = ImageViewStorage()
 
 	// Used to avoid excessive haptic feedbacks
 	internal var lastTouchedRating: Double?
@@ -107,13 +105,15 @@ import UIKit
 	required override public init(frame: CGRect) {
 		super.init(frame: frame)
 		
-		initImageViews()
+		imageViewStorage = ImageViewStorage(numberOfImages: maxRating, emptyImage: emptyImage, fullImage: fullImage, contentMode: contentMode)
+		imageViewStorage.addImages(to: self)
 	}
 	
 	required public init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
 		
-		initImageViews()
+		imageViewStorage = ImageViewStorage(numberOfImages: maxRating, emptyImage: emptyImage, fullImage: fullImage, contentMode: contentMode)
+		imageViewStorage.addImages(to: self)
 	}
 	
 	// MARK: -
@@ -135,7 +135,7 @@ import UIKit
 	// MARK: - Overrides
 	
 	open override var intrinsicContentSize: CGSize {
-		guard let prototypeImageView = fullImageViews.first else {
+		guard let prototypeImageView = imageViewStorage.fullImageViews.first else {
 			return super.intrinsicContentSize
 		}
 		
@@ -155,14 +155,14 @@ import UIKit
 			xOffset = CGFloat(i) * desiredImageWidth
 			let imageFrame = CGRect(x: xOffset, y: 0, width: desiredImageWidth, height: frame.size.height)
 			
-			var imageView = emptyImageViews[i]
+			var imageView = imageViewStorage.emptyImageViews[i]
 			imageView.frame = imageFrame
 			
-			imageView = fullImageViews[i]
+			imageView = imageViewStorage.fullImageViews[i]
 			imageView.frame = imageFrame
 		}
 		
-		refreshMaskLayer(rating: rating)
+		imageViewStorage.setVisible(numberOfImages: rating)
 	}
 	
 	// MARK: Tracking

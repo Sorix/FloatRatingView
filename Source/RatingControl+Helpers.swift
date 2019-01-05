@@ -1,67 +1,12 @@
 import UIKit
 
 internal extension RatingControl {
-	func initImageViews() {
-		guard emptyImageViews.isEmpty && fullImageViews.isEmpty else {
-			return
-		}
-		
-		// Add new image views
-		for _ in 0..<maxRating {
-			let emptyImageView = UIImageView()
-			emptyImageView.contentMode = contentMode
-			emptyImageView.image = emptyImage
-			emptyImageViews.append(emptyImageView)
-			addSubview(emptyImageView)
-			
-			let fullImageView = UIImageView()
-			fullImageView.contentMode = contentMode
-			fullImageView.image = fullImage
-			fullImageViews.append(fullImageView)
-			addSubview(fullImageView)
-		}
-	}
-	
-	func removeImageViews() {
-		// Remove old image views
-		for i in 0..<emptyImageViews.count {
-			var imageView = emptyImageViews[i]
-			imageView.removeFromSuperview()
-			imageView = fullImageViews[i]
-			imageView.removeFromSuperview()
-		}
-		emptyImageViews.removeAll(keepingCapacity: false)
-		fullImageViews.removeAll(keepingCapacity: false)
-	}
-	
-	// Refresh hides or shows full images
-	func refreshMaskLayer(rating: Double) {
-		for i in 0..<fullImageViews.count {
-			let imageView = fullImageViews[i]
-			
-			if rating >= Double(i+1) {
-				imageView.layer.mask = nil
-				imageView.isHidden = false
-			} else if rating > Double(i) && rating < Double(i+1) {
-				// Set mask layer for full image
-				let maskLayer = CALayer()
-				maskLayer.frame = CGRect(x: 0, y: 0, width: CGFloat(rating-Double(i))*imageView.frame.size.width, height: imageView.frame.size.height)
-				maskLayer.backgroundColor = UIColor.black.cgColor
-				imageView.layer.mask = maskLayer
-				imageView.isHidden = false
-			} else {
-				imageView.layer.mask = nil;
-				imageView.isHidden = true
-			}
-		}
-	}
-	
-	// Calculates new rating based on touch location in view
+	/// Get rating based on touch
 	func rating(for touch: UITouch) -> Double {
 		let touchLocation = touch.location(in: self)
 		var newRating: Double = 0
 		for i in stride(from: (maxRating-1), through: 0, by: -1) {
-			let imageView = emptyImageViews[i]
+			let imageView = imageViewStorage.emptyImageViews[i]
 			guard touchLocation.x > imageView.frame.origin.x else {
 				continue
 			}
@@ -90,6 +35,10 @@ internal extension RatingControl {
 		}
 	}
 	
+	/// Change rating, send actions, delegate events and haptics.
+	///
+	/// - Parameters:
+	///   - type: if type is `continue` rating will be updated only if `isContinuous` is true. If type is `final` rating will be updated always.
 	func handle(touch: UITouch, type: TouchType) {
 		let newRating = rating(for: touch)
 
@@ -117,7 +66,7 @@ internal extension RatingControl {
 				sendActions(for: [.valueChanged])
 				delegate?.floatRatingView?(self, isUpdating: newRating)
 			} else {
-				refreshMaskLayer(rating: newRating)
+				imageViewStorage.setVisible(numberOfImages: newRating)
 			}
 		case .final:
 			if newRating == rating { return }
